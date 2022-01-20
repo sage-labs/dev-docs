@@ -1,6 +1,6 @@
 # Hardhat Documentation
 
-![Hardhat](https://images.app.goo.gl/kfsa7Jcrihj7JJ3R7)
+![Hardhat](https://hardhat.org/card.png)
 
 Documentation around different use cases for using [Hardhat](https://hardhat.org/)
 
