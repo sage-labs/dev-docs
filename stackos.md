@@ -31,7 +31,6 @@ Once you create your Dockerfile for packaging your application you will need to 
 1. `cd` into the directory your **Dockerfile** exists
 2. Run `docker build .` which looks for a **Dockerfile** in the current directory and builds it.
 
-
 ### Docker Tag
 
 After the docker build succeeds, you will now need to tag your container.
@@ -39,7 +38,7 @@ After the docker build succeeds, you will now need to tag your container.
 1. Run `docker images` to get the Short SHA of your container, it should look something like this: `9eb518b1dfbc`.
 2. Once you retrieve your Short SHA, run `docker tag <SHORT_SHA> <DOCKER_USERNAME>/<DOCKER_REGISTRY_NAME>:<SHORT_SHA>`.
   * Example: `docker tag 9eb518b1dfbc sagelabs/test-image:9eb518b1dfbc`
-4. Finally, do a Docker push. `<DOCKER_USERNAME>/<DOCKER_REGISTRY_NAME>:<SHORT_SHA>`
+3. Finally, do a Docker push. `<DOCKER_USERNAME>/<DOCKER_REGISTRY_NAME>:<SHORT_SHA>`
   * Example:`docker push sagelabs/test-image:9eb518b1dfbc`
 
 ## Getting Started with StackOS
