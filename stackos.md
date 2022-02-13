@@ -2,67 +2,72 @@
 
 ![StackOS](https://cdn-images-1.medium.com/max/544/1*1U2bGZGGBTjS1qLPuHU_Cg@2x.png)
 
-Documentation around different use cases for using [Hardhat](https://hardhat.org/)
+Documentation around different use cases for using [StackOS](https://www.home.stackos.io/)
 
-## Initializing a Hardhat Project
+## Getting Started with Docker
 
-1. `cd` to root of project folder where /sites and other top level directories live.
-2. `mkdir hardhat`
-3. `npm init --yes`
-4. `npm install --save-dev hardhat`
-5. `npx hardhat`
-6. `npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai @openzeppelin/contracts`
-7. Open up your hardhat.config.js file and code snippet below.
-```
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-module.exports = {
-  solidity: {
-    version: "0.8.9",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 10000
-      }
-    }
-  },
-};
-```
+![Docker](https://d1.awsstatic.com/acs/characters/Logos/Docker-Logo_Horizontel_279x131.b8a5c41e56b77706656d61080f6a0217a3ba356d.png)
 
-## Deploying from WSL or Linux CLI
+### Docker Account
 
-Ref: https://hardhat.org/tutorial/deploying-to-a-live-network.html
+Create an account with [Dockerhub](https://hub.docker.com/) so you can push your Docker containers.
 
-1. `npx hardhat run scripts/deploy.js optional[--network rinkeby]`
+### Install Docker on your CLI
 
-## Verifying contract from WSL or Linux CLI
+Follow this [link](https://docs.docker.com/engine/install/ubuntu/) to install the docker cli on your terminal.
 
-Ref: https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html
+Verify you have it installed by running `docker` in the terminal and verify you have an output.
 
-1. `cd` into hardhat directory
-2. `npm install --save-dev @nomiclabs/hardhat-etherscan`
-3. Add this to top of hardhat.config.js or .ts file
-    1. `import "@nomiclabs/hardhat-etherscan";`
-4. Add your Etherscan API Key to hardhat.config.js or .ts
-```
-  etherscan: {
-    apiKey: "YOUR_ETHERSCAN_API_KEY"
-  }
-```
-5. Create a .js file with your constructor arguments
-```
-module.exports = [
-  arg1,
-  arg2,
-  "Types don’t matter",
-  [
-    "Can use arrays",
-    "And objects also",
-  ],
-  [1, 1],
-];
-```
-6. Substitute the appropriate variables into this command
-    1. `npx hardhat verify optional[--contract contracts/RND.sol:RND]  --network MY_NETWORK --constructor-args ARGUEMENTS_IN_JS_FILE DEPLOYED_CONTRACT_ADDRESS`
-    2. Example: `npx hardhat verify --contract contracts/RND.sol:RND  --network rinkeby --constructor-args scripts/arguments.js 1x101101010101010111`
+### Docker Login
+
+To be able to do a `docker push` you need to ensure you are logged in.
+
+Run a `docker login` in your terminal to log into your DockerHub Account.
+
+### Docker Build
+
+Once you create your Dockerfile for packaging your application you will need to build the container.
+
+1. `cd` into the directory your **Dockerfile** exists
+2. Run `docker build .` which looks for a **Dockerfile** in the current directory and builds it.
+
+
+### Docker Tag
+
+After the docker build succeeds, you will now need to tag your container.
+
+1. Run `docker images` to get the Short SHA of your container, it should look something like this: `9eb518b1dfbc`.
+2. Once you retrieve your Short SHA, run `docker tag <SHORT_SHA> <DOCKER_USERNAME>/<DOCKER_REGISTRY_NAME>:<SHORT_SHA>`.
+  * Example: `docker tag 9eb518b1dfbc sagelabs/test-image:9eb518b1dfbc`
+4. Finally, do a Docker push. `<DOCKER_USERNAME>/<DOCKER_REGISTRY_NAME>:<SHORT_SHA>`
+  * Example:`docker push sagelabs/test-image:9eb518b1dfbc`
+
+## Getting Started with StackOS
+
+### Add BSC/StackOS to your Metamask wallet
+
+[Follow this guide](https://myterablock.medium.com/how-to-add-binance-smart-chain-network-to-metamask-and-connect-it-to-pancakeswap-c4a245a2952d) to add BSC to your Metamask wallet if it is not already there.
+
+Then switch over to Smart Chain in Metamask and add Stack token.
+
+[Use coingecko](https://www.coingecko.com/en/coins/stackos) to get the proper contract to add, it should auto populate in metamask.
+
+### Purchase $Stack tokens on Pancake swap
+
+[Follow this guide](https://medium.com/stackos/how-to-buy-stack-on-pancakeswap-using-metamask-3e122dc04061) to purchase $Stack tokens.
+
+### Log into Stack OS
+
+[Use this link](https://app.stackos.io/) to log into StackOS.
+
+Depending on the needs for availability, chose the network, and then chose the cluster you want to deploy your application onto.
+
+### Add $Stack tokens to cluster
+
+Once logged in you should click the `Upgrade` tab.
+
+From there you will be able to pruchase the CPU / Memory / Storage needed.
+
+After filling in what you want to purchase, click the `Upgrade` Button on the bottom left.
+
+You are now ready to deploy your application.
