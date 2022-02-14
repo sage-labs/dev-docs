@@ -70,3 +70,38 @@ From there you will be able to pruchase the CPU / Memory / Storage needed.
 After filling in what you want to purchase, click the `Upgrade` Button on the bottom left.
 
 You are now ready to deploy your application.
+
+### Deployment on Stack OS
+
+To deploy our webserver on StackOS, ensure these are set:
+
+1. The port is 3000 -> 3000
+
+2. Verify that you own the domain by creating a txt record in your DNS provider
+  * Write the domain that you want to host, and click the `Verify Domain` Button. This will give you the exact txt record you need to create in your DNS provider.
+
+3. Once you verify the domain and deploy the web application, publish the A record in the same DNS provider you published the txt record in. This will most likely be the root domain or a sub domain, and map to an IP address.
+
+### Verify Deployment is Running / Working | Kubernetes
+
+Spin up a shell on the top right.
+
+Useful commands for Kubernetes using **kubectl**
+
+[Resource for kubectl commands](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+`kubectl get pods`
+
+Lists all the pods running in the namespace
+
+`kubectl get pods --watch`
+
+Lists all the pods and tracks the activity. Good to use during fresh deployments
+
+`kubectl logs -f pod/<most recent pod> `
+
+Pull logs from the docker container. Use the name of the pod that you get from `kubectl get pods` command.
+
+`kubectl delete pod/<pod_name>`
+
+Allows you to delete the pod, and Kubernetes will automagically launch a fresh deployment.
