@@ -1,5 +1,4 @@
 # Shit That Needs To Get Done
------------------------------
 
 - [ ] Build our website
 - [ ] Become a business
