@@ -1,6 +1,6 @@
 # Shit That Needs To Get Done
 
-- [ ] Build our website
+- [x] Build our website
 - [ ] Become a business
 - [ ] Update all contracts
 - [ ] Build a whitelisting dashboard
